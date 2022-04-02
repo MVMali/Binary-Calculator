@@ -8,8 +8,8 @@
    
 ## Screenshots
 - Home Page(top) How to run in your computer
-![App Screenshot](s1.png)
+![App Screenshot](s3.png)
 - The output(bottom)
 ![App Screenshot](s2.png)
 - Gives error when giving incorrect input
-![App Screenshot](s3.png)
+![App Screenshot](s1.png)
