@@ -11,5 +11,5 @@
 ![App Screenshot](s3.png)
 - The output
 ![App Screenshot](s2.png)
-- Gives error when giving incorrect input
+- Gives error when given incorrect input
 ![App Screenshot](s1.png)
