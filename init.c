@@ -1,0 +1,141 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include "init.h"
+
+
+//operations on oparator stack
+void init_os(ostack *s, int len){
+    s->a = (char*)malloc(sizeof(char)*len);  
+    s->size = len;
+    s->top = -1;
+}
+
+int isFull_os(ostack s) {
+    if(s.top == s.size-1)
+        return 1;
+    else
+        return 0;
+}
+ 
+int isEmpty_os(ostack s) {
+    if(s.top == -1)
+        return 1;
+    else
+        return 0;
+}
+
+
+//push an operator into the operator stack
+void push_os(ostack *s, char d){
+    if(isFull_os(*s))
+        return;
+    else {
+        s->top++;
+        s->a[s->top] = d;
+        return;
+    }
+}
+
+//pop an operator from the operator stack
+char pop_os(ostack *s){ 
+    char e = '#';
+    if(!isEmpty_os(*s)){
+        e = s->a[s->top];
+        s->top--;
+    }
+    return e;
+
+}
+//operations on the operand stack
+
+void init_ps(pstack *s, int len){
+    s -> size = len;
+    s -> top = -1;
+    s -> arr = (node**)malloc(sizeof(node *) * len);
+    s->top = len -1;
+    while(s->top != -1) {
+            s->arr[s->top] == NULL;
+            s->top--;
+    }
+    return;
+}
+
+
+int isEmpty_op(pstack ps) {
+    if(ps.top == -1) 
+        return 1;
+    else return 0;
+}
+
+int isFull_op(pstack ps) {
+    if(ps.top == (ps.size - 1)) {
+        return 1;
+    }
+    else return 0;
+}
+
+void init_num(pstack *ps) {
+    ps -> top++;
+    ps -> arr[ps->top] = NULL;
+}
+
+
+void push_op(pstack *s, node *p) {
+//    init_num(s);
+    s -> top++;
+    s -> arr[s -> top] = NULL;
+    s -> arr[s -> top] = p;
+    return;
+}
+
+node* pop_op(pstack *s) { //operand stack  pop the doubly linked list from the arrray of pointers
+    node *e = NULL;
+    if(!isEmpty_op(*s)) {
+        e = s->arr[s->top];
+        s -> arr[s-> top] = NULL;
+        s->top--;
+    }
+    else {
+        printf("Stack is empty\n");
+    }
+    return e;
+}
+
+
+
+//insert a digit into a number
+void insert_dig(list *n, int d) {            //Making doubly linked list and inserting a digit at last 
+    node *new = NULL, *p = (*n);
+    new = (node*)malloc(sizeof(node));
+    if(new) {
+        new -> dig = d;
+        new -> next = NULL; 
+        new -> prev = NULL;
+    }
+    else return;
+    
+    
+    if((*n) == NULL) {
+        (*n) = new;
+        return;
+    }
+    else {
+        while(p -> next != NULL) {
+            p = p -> next;
+        }
+        p -> next = new;
+        new -> prev = p;
+        new -> next = NULL;
+        return;
+    }
+}
+char *whitespace(char *str){            //it removes the whitespaces in the string 
+	int i=0 ,j=0;
+	while(str[i]){
+		if(str[i]!=' ')
+			str[j++]=str[i];
+		i++;
+		}
+	str[j]='\0';
+	return str;
+	}
